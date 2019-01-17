@@ -11,7 +11,7 @@ class Socket{
 		this.io.on('connection', (socket) => {
 
 			/* Sending and Receiving message */
-			socket.on(`message`, async (data) => {
+			socket.on(`message`, (data) => {
 				console.log(data);
 				this.io.emit(`message-response`, {
 					error : false,
