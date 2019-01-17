@@ -1,0 +1,51 @@
+<!-- Loading Overlay Starts -->
+<div class="loading" *ngIf="loading">
+  Loading...
+</div>
+<!-- Loading Overlay Ends -->
+
+<!-- Login PopUP Starts -->
+<div class="singup" *ngIf="!registeredUser">
+  <form (submit)="submitSingUpForm()" [formGroup]="singupForm" class="singup-form">
+    <h1>Register yourself to chat...</h1>
+    <div class="form-group">
+      <input formControlName="username" type="text" placeholder="Enter the username">
+    </div>
+    <button type="submit" >Let me in</button>
+  </form>
+</div>
+<!-- Login PopUP Ends -->
+
+<!-- Chat Page starts Starts -->
+<div class="page">
+  <!-- Page header starts -->
+  <header class="header">
+    Hello {{username === null ? '_______' : username}}
+  </header>
+  <!-- Page header ends -->
+  <!-- Page Content starts -->
+  <div class="main">
+    <!-- Message Box starts -->
+    <div class="messages">
+      <ul class="message-thread">
+        <li class="align-right" *ngFor="let message of messages"> {{message}} </li>
+      </ul>
+    </div>
+    <!-- Message Box starts -->
+    <!-- Message Text starts -->
+    <div class="messagebox">
+      <form  (keydown)="sendMessage($event)" [formGroup]="messageForm">
+        <textarea formControlName="message" placeholder="Write your message here and hit Enter"></textarea>
+      </form>
+    </div>
+    <!-- Message Text ends -->
+  </div>
+  <!-- Page Content ends -->
+  <!-- Page Footer starts -->
+  <footer class="footer">
+    <span>Mean stack WorkShop</span>
+    <span>Powered by Iosys Bootcamp</span>
+  </footer>
+  <!-- Page Footer ends -->
+</div>
+<!-- Chat Page starts ends -->

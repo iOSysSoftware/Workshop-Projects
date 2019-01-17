@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="loading">
+  <h1>Loading</h1>
+</div>
+<div class="home">
+  <div class="header">
+    <h2>
+      Hello {{username}}
+    </h2>
+    <span (click)="logout()">Logout</span>
+  </div>
+  <div class="content chatbox">
+    <div class="messages">
+      <ul class="message-thread">
+        <li class="align-right" *ngFor="let message of messages"> {{message}} </li>
+      </ul>
+    </div>
+    <div class="messagebox">
+      <form (keydown)="sendMessage($event)" [formGroup]="messageForm" novalidate>
+        <textarea formControlName="message" placeholder="Write your message here and hit Enter"></textarea>
+      </form>
+    </div>
+  </div>
+</div>

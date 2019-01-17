@@ -1,0 +1,29 @@
+<div class="loading" *ngIf="loading">
+  <h1>Loading</h1>
+</div>
+<div class="container login-conatiner">
+  <h1 class="heading">
+    Chat application using Angular and Nodejs
+  </h1>
+  <div class="login-box">
+    <h3>Login</h3>
+    <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+      <input formControlName="username" type="text" placeholder="Enter your name" autocomplete="off"/>
+      <div class="alert alert-danger feedback" *ngIf="!loginForm.controls['username'].valid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+        <ul>
+          <li *ngIf="loginForm.controls['username'].errors.required">Username is required</li>
+          <li *ngIf="loginForm.controls['username'].value.length < 5"> Username should be greater than 5 chars.</li>
+        </ul>
+      </div> 
+      <input formControlName="password" type="password" placeholder="Enter your password" autocomplete="off"/>
+      <div class="alert alert-danger feedback" *ngIf="!loginForm.controls['password'].valid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        <ul>
+          <li *ngIf="loginForm.controls['password'].errors.required">Password is required</li>
+          <li *ngIf="loginForm.controls['password'].value.length < 8"> Password should be greater than 8 chars.</li>
+        </ul>
+      </div>
+      <button type="submit">Let me in</button>
+    </form>
+    <a routerLink="/register">Don't have an account? Register here</a>
+  </div>
+</div> 
